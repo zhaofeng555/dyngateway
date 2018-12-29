@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: host_route_163
+        uri: http://www.163.com
+        predicates:
+        - Path=/163/**
+        filters:
+        - StripPrefix=1
+      - id: host_route_baidu
+        uri: http://www.baidu.com
+        predicates:
+        - Path=/baidu/**
+        filters:
+        - StripPrefix=1
+
+
+#开启actuator管理api，后面要关闭
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
